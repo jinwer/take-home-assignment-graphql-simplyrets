@@ -1,20 +1,22 @@
 const express = require('express');
+const morgan = require('morgan');
+
 const logger = require('./logger');
+const gqlServer = require('./graphql');
 
 const app = express();
+app.use(morgan('tiny'));
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
-// Please use apollo server to implement your graphql query
-// const { ApolloServer } = require('apollo-server-express');
-// const server = new ApolloServer({
-//  //...
-// });
-// server.applyMiddleware({ app, path:"/graphql" });
-
-/** Please remove me line 11-14 **/
-app.get('*', (req, res, next) => {
-    res.send("Good luck! 😀")
-});
-
-app.listen({ port: 4000 }, () =>  {
-    logger.info(`Listening on http://localhost:4000/graphql`);
-});
+const server = (async () => {
+    await gqlServer.start();
+    gqlServer.applyMiddleware({ app });
+    return app.listen(4000, () => {
+      logger.info("hi, I am listening to 4000")
+      logger.info('graphql path' + gqlServer.graphqlPath)
+    });
+  })();
+  
+  module.exports = server;
+  

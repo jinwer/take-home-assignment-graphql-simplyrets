@@ -8,14 +8,18 @@
   },
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watchAll",
     "start": "node ./src/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "apollo-server-express": "3.3.0",
+    "axios": "^0.21.1",
     "express": "4.17.1",
+    "graphql": "^15.5.1",
     "jest": "27.0.6",
+    "morgan": "^1.10.0",
     "winston": "^3.3.3"
   }
 }
