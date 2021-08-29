@@ -168,6 +168,6 @@ module.exports = gql`
     }
 
     type Query {
-        listings: [Listing]
+        listings(city: String): [Listing]
     }
 `;

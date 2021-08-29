@@ -1,4 +1,4 @@
-module.exports = [
+const city1 = [
   {
     listingId: '1',
     terms: '1sadfjas',
@@ -8,6 +8,9 @@ module.exports = [
     },
     listPrice: 1231233,
   },
+];
+
+const city2 = [
   {
     listingId: '2',
     terms: '1sadfja dafdsfdf',
@@ -26,4 +29,13 @@ module.exports = [
     },
     listPrice: 12312133,
   },
-]
+];
+
+module.exports = {
+  city1,
+  city2,
+  listings: [
+    ...city1,
+    ...city2,
+  ]
+}
