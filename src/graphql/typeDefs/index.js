@@ -1,4 +1,6 @@
-module.exports = `
+const { gql } = require('apollo-server-express');
+
+module.exports = gql`
     type Listing {
         favoriteCount: Int
         privateRemarks: String
@@ -163,5 +165,9 @@ module.exports = `
         subTypeText: String
         yearBuilt: Int
         parking: Parking 
+    }
+
+    type Query {
+        listings: [Listing]
     }
 `;
