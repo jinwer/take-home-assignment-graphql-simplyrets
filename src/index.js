@@ -1,4 +1,6 @@
 const express = require('express');
+const logger = require('./logger');
+
 const app = express();
 
 // Please use apollo server to implement your graphql query
@@ -13,6 +15,6 @@ app.get('*', (req, res, next) => {
     res.send("Good luck! 😀")
 });
 
-app.listen({ port: 4000 }, () =>
-    console.log(`Listening on http://localhost:4000/graphql`)
-);
+app.listen({ port: 4000 }, () =>  {
+    logger.info(`Listening on http://localhost:4000/graphql`);
+});
